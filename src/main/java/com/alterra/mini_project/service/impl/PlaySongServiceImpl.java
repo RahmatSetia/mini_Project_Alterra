@@ -52,7 +52,7 @@ public class PlaySongServiceImpl implements PlaySongService {
     }
 
     @Override
-    public PlaySongs deletePlaySongs(Long id) {
+    public PlaySongs deletePlaySongs(@PathVariable Long id) {
         Optional<PlaySongs> psId = playSongRepo.findById(id);
         psId.ifPresent(delete -> {
             playSongRepo.delete(delete);
