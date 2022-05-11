@@ -67,4 +67,35 @@ public class ArtistServiceTest {
         assertEquals(artist, result);
     }
 
+    @Test
+    public void updateArtist_WillReturnArtistEdit(){
+        ArtistPayload artistPayload = easyRandom.nextObject(ArtistPayload.class);
+
+        Optional<Artist> artistID = artistRepository.findById(id);
+        artistID.ifPresent(data ->{
+            data.setName_artist(artistPayload.getName_artist());
+            data.setGender(artistPayload.getGender());
+            data.setCreated_at(artistPayload.getCreated_at());
+            data.setUpdated_at(artistPayload.getUpdated_at());
+        });
+
+        when(artistID).thenReturn(artistID);
+        Artist arResult = artistService.updateArtist(id,artistPayload);
+
+        assertNotEquals(artistID, arResult);
+    }
+
+    @Test
+    public void deleteArtist_WillReturnNull(){
+        Optional<Artist> artistID = artistRepository.findById(id);
+        artistID.ifPresent(dell ->{
+            artistRepository.delete(dell);
+        });
+
+        when(artistID).thenReturn(artistID);
+        Artist arResult = artistService.deleteArtist(id);
+
+        assertNull(arResult);
+    }
+
 }
