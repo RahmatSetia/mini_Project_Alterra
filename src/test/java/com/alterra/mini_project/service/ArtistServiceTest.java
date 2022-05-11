@@ -1,6 +1,7 @@
 package com.alterra.mini_project.service;
 
 import com.alterra.mini_project.entity.Artist;
+import com.alterra.mini_project.payload.ArtistPayload;
 import com.alterra.mini_project.repository.ArtistRepository;
 import com.alterra.mini_project.service.impl.ArtistServiceImpl;
 import org.jeasy.random.EasyRandom;
@@ -50,6 +51,20 @@ public class ArtistServiceTest {
         when(artistRepository.findById(id)).thenReturn(Optional.ofNullable(artist));
         Artist artistHasil = artistService.getById(id);
         assertEquals(artist, artistHasil);
+    }
+
+    @Test
+    public void createArtist_WillReturnNewArtist(){
+        ArtistPayload artistPayload = easyRandom.nextObject(ArtistPayload.class);
+        Artist artist = new Artist();
+        artist.setName_artist(artistPayload.getName_artist());
+        artist.setGender(artistPayload.getGender());
+        artist.setCreated_at(artistPayload.getCreated_at());
+        artist.setUpdated_at(artistPayload.getUpdated_at());
+        when(artistRepository.save(artist)).thenReturn(artist);
+
+        Artist result = artistService.createArtist(artistPayload);
+        assertEquals(artist, result);
     }
 
 }
