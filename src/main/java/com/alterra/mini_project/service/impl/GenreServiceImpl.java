@@ -27,7 +27,7 @@ public class GenreServiceImpl implements GenreService {
     public Genres getGenreId(@PathVariable Long id) {
         Genres genres = new Genres();
         genres = genreRepository.findById(id).orElse(null);
-        return null;
+        return genres;
     }
 
     @Override
