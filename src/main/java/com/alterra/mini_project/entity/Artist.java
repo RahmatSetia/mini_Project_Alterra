@@ -1,16 +1,20 @@
 package com.alterra.mini_project.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-@Data
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "artist")
-public class Artist {
+public class Artist implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
@@ -24,6 +28,6 @@ public class Artist {
     private OffsetDateTime updated_at;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
     private List<Songs> songs;
 }

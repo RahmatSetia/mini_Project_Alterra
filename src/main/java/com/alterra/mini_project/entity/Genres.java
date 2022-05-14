@@ -1,14 +1,21 @@
 package com.alterra.mini_project.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-@Data
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "genres")
 public class Genres {
 
@@ -24,7 +31,11 @@ public class Genres {
     @Column(name = "updated_at")
     private OffsetDateTime updated_at;
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "songs")
-    private List<Songs> songs;
+    @JsonManagedReference
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
+    private Set<Songs> songs = new HashSet<>();
+
+//    @JsonBackReference
+//    @OneToMany(mappedBy = "songs")
+//    private List<Songs> songs;
 }

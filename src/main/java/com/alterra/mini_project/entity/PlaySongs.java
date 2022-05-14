@@ -1,17 +1,21 @@
 package com.alterra.mini_project.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.List;
 
-@Data
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "play_songs")
-public class PlaySongs {
+public class PlaySongs implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,12 +30,12 @@ public class PlaySongs {
     private OffsetDateTime updated_at;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "id_users", nullable = false, insertable = false, updatable = false)
     private Users users;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "id_songs", nullable = false, insertable = false, updatable = false)
     private Songs songs;
 

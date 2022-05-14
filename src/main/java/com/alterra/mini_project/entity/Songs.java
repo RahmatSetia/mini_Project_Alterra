@@ -2,16 +2,23 @@ package com.alterra.mini_project.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-@Data
 @Entity
+@Setter
+@Getter
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "songs")
-public class Songs {
+public class Songs implements Serializable {
 
     @Id
     @GeneratedValue
@@ -33,16 +40,27 @@ public class Songs {
     private OffsetDateTime updated_at;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "songs")
+    @OneToMany(mappedBy = "songs", cascade = CascadeType.ALL)
     private List<PlaySongs> playSongs;
 
-    @JsonManagedReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_genre", nullable = false, insertable = false, updatable = false)
-    private Songs songs;
+    @JsonBackReference
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "songs_genres",
+            joinColumns = {
+                    @JoinColumn(name = "song_id_genre", referencedColumnName = "id_genre",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "genre_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
+    private Set<Genres> genres = new HashSet<>();
+
+//    @JsonManagedReference
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "id_genre", nullable = false, insertable = false, updatable = false)
+//    private Songs songs;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "id_artist", nullable = false, insertable = false, updatable = false)
     private Artist artist;
 

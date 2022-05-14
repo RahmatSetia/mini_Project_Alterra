@@ -20,10 +20,11 @@ public class UserController {
 
     @GetMapping
     public BaseResponse<List<Users>> getAll(){
-        BaseResponse baseResponse = new BaseResponse();
+        BaseResponse baseResponse = new BaseResponse<List<Users>>();
         baseResponse.setSuccess(true);
         baseResponse.setMessage("get All");
-        baseResponse.setData(userService.getAll());
+        var coba = userService.getAll();
+        baseResponse.setData(coba);
         return baseResponse;
     }
 
