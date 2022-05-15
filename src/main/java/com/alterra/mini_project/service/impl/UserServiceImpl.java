@@ -5,6 +5,8 @@ import com.alterra.mini_project.entity.Users;
 import com.alterra.mini_project.repository.UserRepository;
 import com.alterra.mini_project.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -62,5 +64,13 @@ public class UserServiceImpl implements UserService {
             userRepository.delete(action);
         });
         return userRepository.getById(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Users users = userRepository.getDisticntTopByUsername(username);
+        if (users == null)
+            throw new UsernameNotFoundException("Username not Found");
+        return users;
     }
 }

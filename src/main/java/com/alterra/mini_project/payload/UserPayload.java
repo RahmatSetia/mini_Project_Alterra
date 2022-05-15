@@ -11,7 +11,9 @@ public class UserPayload {
     private String first_name;
     private String last_name;
     private String gender;
+    private String username;
     private String password;
     private OffsetDateTime created_at;
     private OffsetDateTime updated_at;
+    private String role;
 }
