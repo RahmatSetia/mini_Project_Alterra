@@ -97,5 +97,4 @@ public class ArtistServiceTest {
 
         assertNull(arResult);
     }
-
 }
