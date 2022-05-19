@@ -17,5 +17,4 @@ public class MiniProjectApplication {
 	public String pub(){
 		return "try new endpoint";
 	}
-
 }
