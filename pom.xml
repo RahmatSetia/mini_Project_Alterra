@@ -117,15 +117,6 @@
 						</exclude>
 					</excludes>
 				</configuration>
-
-				<version>2.0.6.RELEASE</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>com.heroku.sdk</groupId>
