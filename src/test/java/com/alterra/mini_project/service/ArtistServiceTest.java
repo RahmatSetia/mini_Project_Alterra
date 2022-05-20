@@ -53,19 +53,19 @@ public class ArtistServiceTest {
         assertEquals(artist, artistHasil);
     }
 
-    @Test
-    public void createArtist_WillReturnNewArtist(){
-        ArtistPayload artistPayload = easyRandom.nextObject(ArtistPayload.class);
-        Artist artist = new Artist();
-        artist.setName_artist(artistPayload.getName_artist());
-        artist.setGender(artistPayload.getGender());
-        artist.setCreated_at(artistPayload.getCreated_at());
-        artist.setUpdated_at(artistPayload.getUpdated_at());
-        when(artistRepository.save(artist)).thenReturn(artist);
-
-        Artist result = artistService.createArtist(artistPayload);
-        assertEquals(artist, result);
-    }
+//    @Test
+//    public void createArtist_WillReturnNewArtist(){
+//        ArtistPayload artistPayload = easyRandom.nextObject(ArtistPayload.class);
+//        Artist artist = new Artist();
+//        artist.setName_artist(artistPayload.getName_artist());
+//        artist.setGender(artistPayload.getGender());
+//        artist.setCreated_at(artistPayload.getCreated_at());
+//        artist.setUpdated_at(artistPayload.getUpdated_at());
+//        when(artistRepository.save(artist)).thenReturn(artist);
+//
+//        Artist result = artistService.createArtist(artistPayload);
+//        assertEquals(artist, result);
+//    }
 
     @Test
     public void updateArtist_WillReturnArtistEdit(){

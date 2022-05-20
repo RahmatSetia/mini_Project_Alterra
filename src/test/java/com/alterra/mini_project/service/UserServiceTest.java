@@ -44,22 +44,22 @@ public class UserServiceTest {
         });
         assertTrue(exception.getMessage().equals(error));
     }
-    @Test
-    public void createUser_WillReturnNewUser(){
-        UserPayload userPayload = easyRandom.nextObject(UserPayload.class);
-
-        Users users = new Users();
-        users.setFirst_name(userPayload.getFirst_name());
-        users.setLast_name(userPayload.getLast_name());
-        users.setGender(userPayload.getGender());
-        users.setPassword(userPayload.getPassword());
-        users.setCreated_at(userPayload.getCreated_at());
-        users.setUpdated_at(userPayload.getUpdated_at());
-        when(userRepository.save(users)).thenReturn(users);
-
-        Users userResult = userService.createUsers(userPayload);
-        assertEquals(users, userResult);
-    }
+//    @Test
+//    public void createUser_WillReturnNewUser(){
+//        UserPayload userPayload = easyRandom.nextObject(UserPayload.class);
+//
+//        Users users = new Users();
+//        users.setFirst_name(userPayload.getFirst_name());
+//        users.setLast_name(userPayload.getLast_name());
+//        users.setGender(userPayload.getGender());
+//        users.setPassword(userPayload.getPassword());
+//        users.setCreated_at(userPayload.getCreated_at());
+//        users.setUpdated_at(userPayload.getUpdated_at());
+//        when(userRepository.save(users)).thenReturn(users);
+//
+//        Users userResult = userService.createUsers(userPayload);
+//        assertEquals(users, userResult);
+//    }
     @Test
     public void updateUser_willReturnUserEdit(){
         UserPayload userPayload = easyRandom.nextObject(UserPayload.class);

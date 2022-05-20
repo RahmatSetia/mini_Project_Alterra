@@ -54,24 +54,24 @@ public class SongRepoServiceTest {
         assertEquals(songs, songHasil);
     }
 
-    @Test
-    public void createSong_WillReturnNewSong(){
-        SongPayload songPayload = easyRandom.nextObject(SongPayload.class);
-
-        Songs song = new Songs();
-        song.setTitle(songPayload.getTitle());
-        song.setId_genre(songPayload.getId_genre());
-        song.setId_artist(songPayload.getId_artist());
-        song.setYear(songPayload.getYear());
-        song.setDuration(songPayload.getDuration());
-        song.setCreated_at(songPayload.getCreated_at());
-        song.setUpdated_at(songPayload.getUpdated_at());
-
-        when(songsRepository.save(song)).thenReturn(song);
-        Songs songHasil = songServiceImpl.createSong(songPayload);
-
-        assertEquals(song, songHasil);
-    }
+//    @Test
+//    public void createSong_WillReturnNewSong(){
+//        SongPayload songPayload = easyRandom.nextObject(SongPayload.class);
+//
+//        Songs song = new Songs();
+//        song.setTitle(songPayload.getTitle());
+//        song.setId_genre(songPayload.getId_genre());
+//        song.setId_artist(songPayload.getId_artist());
+//        song.setYear(songPayload.getYear());
+//        song.setDuration(songPayload.getDuration());
+//        song.setCreated_at(songPayload.getCreated_at());
+//        song.setUpdated_at(songPayload.getUpdated_at());
+//
+//        when(songsRepository.save(song)).thenReturn(song);
+//        Songs songHasil = songServiceImpl.createSong(songPayload);
+//
+//        assertEquals(song, songHasil);
+//    }
 
     @Test
     public void updateSong_WillReturnSongEdit(){

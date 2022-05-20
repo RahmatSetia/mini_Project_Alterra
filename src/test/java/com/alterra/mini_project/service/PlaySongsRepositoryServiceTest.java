@@ -54,20 +54,20 @@ public class PlaySongsRepositoryServiceTest {
         assertEquals(playSongs, psResult);
     }
 
-    @Test
-    public void createPlaySong_WillReturnNewPlaySong(){
-        PlaySongPayload psPayload = easyRandom.nextObject(PlaySongPayload.class);
-
-        PlaySongs ps = new PlaySongs();
-        ps.setId_song(psPayload.getId_song());
-        ps.setId_users(psPayload.getId_users());
-        ps.setCreated_at(psPayload.getCreated_at());
-        ps.setUpdated_at(psPayload.getUpdated_at());
-        when(playSongRepository.save(ps)).thenReturn(ps);
-
-        PlaySongs psResult = playSongService.createPlaySongs(psPayload);
-        assertEquals(ps, psResult);
-    }
+//    @Test
+//    public void createPlaySong_WillReturnNewPlaySong(){
+//        PlaySongPayload psPayload = easyRandom.nextObject(PlaySongPayload.class);
+//
+//        PlaySongs ps = new PlaySongs();
+//        ps.setId_song(psPayload.getId_song());
+//        ps.setId_users(psPayload.getId_users());
+//        ps.setCreated_at(psPayload.getCreated_at());
+//        ps.setUpdated_at(psPayload.getUpdated_at());
+//        when(playSongRepository.save(ps)).thenReturn(ps);
+//
+//        PlaySongs psResult = playSongService.createPlaySongs(psPayload);
+//        assertEquals(ps, psResult);
+//    }
     @Test
     public void updatePlaySong_WillReturnPlaySongEdit(){
         PlaySongPayload psPayload = easyRandom.nextObject(PlaySongPayload.class);
