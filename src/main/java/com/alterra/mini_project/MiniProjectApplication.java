@@ -12,9 +12,4 @@ public class MiniProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MiniProjectApplication.class, args);
 	}
-
-	@GetMapping("/coba")
-	public String pub(){
-		return "try new endpoint";
-	}
 }
