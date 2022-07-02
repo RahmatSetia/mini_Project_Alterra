@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService {
     List<Users> getAll();
-    Users getByid(Long id);
+    Users getById(Long id);
     Users createUsers(UserPayload userPayload);
     Users updateUsers(Long id, UserPayload userPayload);
     Users deleteUsers(Long id);

@@ -33,7 +33,7 @@ public class UserController {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setSuccess(true);
         baseResponse.setMessage("by id");
-        baseResponse.setData(userService.getByid(id));
+        baseResponse.setData(userService.getById(id));
         return baseResponse;
     }
 

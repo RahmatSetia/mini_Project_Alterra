@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Users getByid(@PathVariable Long id) {
+    public Users getById(@PathVariable Long id) {
         Users users = new Users();
         users = userRepository.findById(id).orElse(users);
         return users;
